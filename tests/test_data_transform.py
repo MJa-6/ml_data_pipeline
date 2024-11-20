@@ -1,4 +1,3 @@
-import pytest
 from ml_data_pipeline.data_transform import MinMaxScalerTransformer
 import pandas as pd
 

@@ -1,0 +1,7 @@
+data_loader:
+  file_path: "data/sample_data_prod.csv"
+  file_type: "csv"
+
+transformation:
+  normalize: true
+  scaling_method: "std"  # Options: "standard", "minmax"

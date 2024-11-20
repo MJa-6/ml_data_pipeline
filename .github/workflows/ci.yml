@@ -11,21 +11,28 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '>=3.12'
+          python-version: '>=3.11'  # Ensure this matches your project's Python version
+
       - name: Install Poetry
         run: pipx install poetry
         shell: bash
+
       - name: Install Dependencies
         run: poetry install
+
       - name: Run Tests
-        run: poetry run pytest tests/
+        run: poetry run invoke test
+
       - name: Run Linting
-        run: poetry run ruff check src/ tasks.py tests/
+        run: poetry run invoke lint
+
       - name: Run Typing Checks
-        run: poetry run mypy src/ tasks.py tests/
+        run: poetry run invoke type
